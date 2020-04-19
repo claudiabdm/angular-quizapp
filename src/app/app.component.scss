@@ -1,0 +1,22 @@
+@import '../styles/global/variables';
+@import '../styles/mixins/mixins';
+
+.navbar {
+  @include flex();
+  @include size(100vw, rem(70px));
+  background-color: $primary;
+  color: #fff;
+  font-size: 2rem;
+}
+
+.container {
+  @include size(100%);
+  @include flex(flex-start, center);
+  padding: 100px;
+}
+
+.welcome {
+  @include flex(stretch, flex-start);
+
+  flex-direction: column;
+}

@@ -1,0 +1,24 @@
+// ------------------------------------------
+// VARIABLES
+// ------------------------------------------
+
+// Color palette
+// -----------------------------------------
+// Colors
+$primary: #c485ff;
+$secondary: #85f1ff;
+
+// Grey
+$grey-100: #eee;
+$grey-200: #666;
+$grey-300: #111;
+
+
+
+:root {
+  --btn-bgc: #{$grey-100};
+  --btn-color: #{$grey-300};
+  --btn-active-bgc: #{darken($grey-100, 25%)};
+  --btn-active-color: #000;
+
+}

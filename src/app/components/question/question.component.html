@@ -1,0 +1,9 @@
+<h2>{{idx+1}}.<span [innerHtml]="question.question"></span></h2>
+<ul>
+  <form [formGroup]="form">
+    <li *ngFor="let option of question.options; let optionIdx = index">
+      <input type="radio" [name]="idx" [id]="optionIdx" [value]="option" [formControlName]="idx">
+      <label [for]="optionIdx" [innerHtml]="option"></label>
+    </li>
+  </form>
+</ul>
