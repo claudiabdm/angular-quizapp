@@ -16,9 +16,13 @@ export class AppComponent implements OnInit {
 
   questions: Question[];
   questionNumber: number = 0;
-  correctAns = 0;
+  correctAns: number = 0;
+  result: string = '';
   start: boolean = false;
   done: boolean = false;
+  disabledBtn: boolean = true;
+  seconds: number = 0;
+  counter;
 
   form: FormGroup;
 
@@ -37,13 +41,15 @@ export class AppComponent implements OnInit {
       this.questions.forEach(question => {
         question['options'] = this.getOptions(question);
       });
-      this.form = this.toFormGroup(this.questions)
+      this.form = this.toFormGroup(this.questions);
+      this.disabledBtn = false;
     });
   }
 
   onStart() {
     this.start = true;
     this.done = false;
+    this.counter = setInterval(() => {this.seconds += 1},1000);
   };
 
   onNext() {
@@ -51,11 +57,13 @@ export class AppComponent implements OnInit {
   }
 
   onSubmit() {
+    clearInterval(this.counter);
     this.questions.forEach((question, idx) => {
       if (question.correct_answer === this.form.value[idx]) {
         this.correctAns += 1;
       }
     })
+    this.result = this.correctAns >= 5 ? 'You passed the quiz!' : "Sorry, you didn't pass the quiz :(";
     this.done = true;
   }
 
@@ -78,7 +86,5 @@ export class AppComponent implements OnInit {
     options.push(question.correct_answer);
     return options;
   }
-
-
 
 }

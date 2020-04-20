@@ -1,0 +1,42 @@
+@import '../../../styles/global/variables';
+@import '../../../styles/mixins/mixins';
+
+.question {
+  display: grid;
+  grid-template-columns: repeat(1, rem(437px));
+  grid-template-rows: repeat(2, max-content);
+  gap: rem(20px);
+
+  &__title {
+    @include size(100%, rem(70px));
+
+    padding: rem(20px);
+    border: 1px solid $primary;
+    line-height: 1;
+    vertical-align: center;
+    border-radius: 5px;
+  }
+
+  &__options {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: repeat(2,  rem(70px));
+    gap: rem(20px);
+  }
+
+  &__option {
+    @include flex(center, center);
+    @include size(100%);
+
+    border: 1px solid $primary;
+    border-radius: 5px;
+  }
+
+  &__control {
+    opacity: 0;
+  }
+
+  &__selected {
+    background-color: $secondary;
+  }
+}

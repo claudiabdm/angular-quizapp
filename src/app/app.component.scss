@@ -10,8 +10,8 @@
 }
 
 .container {
-  @include size(100%);
-  @include flex(flex-start, center);
+  @include absolute(0, 0, 0, 0);
+  @include flex(center, center);
   padding: 100px;
 }
 
@@ -19,4 +19,19 @@
   @include flex(stretch, flex-start);
 
   flex-direction: column;
+}
+
+.form {
+  @include flex(center, center);
+  flex-direction: column;
+}
+
+.btn {
+  @include size(100%, rem(45px));
+
+  margin-top: rem(20px);
+  border:  1px solid $primary;
+  border-radius:  5px;
+  font-family: 'Roboto', sans-serif;
+  font-size: 1rem;
 }

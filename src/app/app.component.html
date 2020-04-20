@@ -3,20 +3,21 @@
 <div class="container">
   <div *ngIf="!start" class="welcome">
     <h2>Press botton to start</h2>
-    <button type="button" (click)="onStart()">Start Quiz</button>
+    <button type="button" (click)="onStart()" class="btn" [disabled]="disabledBtn">Start Quiz</button>
   </div>
 
 
-  <form [formGroup]="form" (ngSubmit)=onSubmit() *ngIf="start && !done">
+  <form [formGroup]="form" (ngSubmit)=onSubmit() *ngIf="start && !done" class="form">
+    <p>Counter: {{this.seconds}}</p>
     <app-question [idx]="questionNumber" [question]="questions[questionNumber]" [form]="form"></app-question>
-    <button type="button" (click)="onNext()" *ngIf="!end">Next Question</button>
-    <button type="submit" *ngIf="end" [disabled]="!form.valid">Submit!</button>
+    <button type="button" (click)="onNext()" *ngIf="!end" class="btn">Next Question</button>
+    <button type="submit" *ngIf="end" [disabled]="!form.valid" class="btn">Submit!</button>
   </form>
 
   <div *ngIf="done" class="welcome">
-    <h2>You've finished the quiz!</h2>
-    <p> You've got {{correctAns}} out of {{questions.length}} </p>
-    <button type="button" (click)="onReset()">Restart Quiz</button>
+    <h2>You've finished the quiz in {{seconds}} seconds!</h2>
+    <p> You've got {{correctAns}} out of {{questions.length}}. {{result}}</p>
+    <button type="button" (click)="onReset()" class="btn">Restart Quiz</button>
   </div>
 
 

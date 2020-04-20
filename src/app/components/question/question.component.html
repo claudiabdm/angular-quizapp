@@ -1,9 +1,12 @@
-<h2>{{idx+1}}.<span [innerHtml]="question.question"></span></h2>
-<ul>
-  <form [formGroup]="form">
-    <li *ngFor="let option of question.options; let optionIdx = index">
-      <input type="radio" [name]="idx" [id]="optionIdx" [value]="option" [formControlName]="idx">
-      <label [for]="optionIdx" [innerHtml]="option"></label>
-    </li>
-  </form>
-</ul>
+<div class="question">
+  <h2 class="question__title">{{idx+1}}.<span [innerHtml]="question.question"></span></h2>
+  <ul>
+    <form [formGroup]="form" class="question__options">
+      <li *ngFor="let option of question.options">
+        <label [for]="option" [innerHtml]="option" (click)="onSelect($event)"  class="question__option" [class.question__selected]="defaultOption === option">
+        </label>
+        <input type="radio" [name]="idx" [id]="option" [value]="option" [formControlName]="idx" class="question__control">
+      </li>
+    </form>
+  </ul>
+</div>
